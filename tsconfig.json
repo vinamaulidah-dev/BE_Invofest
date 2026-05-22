@@ -1,26 +1,17 @@
 {
   "compilerOptions": {
-    /* File Layout */
     "rootDir": "./src",
     "outDir": "./dist",
     "esModuleInterop": true,
-
-    /* Environment Settings */
     "module": "nodenext",
     "target": "es2022",
     "moduleResolution": "nodenext",
     "types": ["node"],
-
-    /* Other Outputs */
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
-
-    /* Stricter Typechecking Options */
     "strict": true,
     "noUncheckedIndexedAccess": true,
-
-    /* Recommended Options for Vercel & Node */
     "isolatedModules": true,
     "moduleDetection": "force",
     "skipLibCheck": true,
