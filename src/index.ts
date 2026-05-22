@@ -5,7 +5,7 @@ import categoryRoutes from "./routes/categoryRoute.js";
 import pembicaraRoutes from "./routes/pembicaraRoute.js";
 
 const app = express();
-const port = process.env.PORT || 3000; // Menggunakan port dinamis dari Vercel jika tersedia
+const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
@@ -18,12 +18,10 @@ app.use('/events', eventRoutes);
 app.use('/categories', categoryRoutes);
 app.use('/pembicara', pembicaraRoutes);
 
-// Jalankan listen hanya jika tidak berada di lingkungan Vercel (Production)
 if (process.env.NODE_ENV !== 'production') {
   app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
   });
 }
 
-// WAJIB: Export app agar dibaca oleh Vercel Serverless
 export default app;
