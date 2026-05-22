@@ -7,7 +7,13 @@ import pembicaraRoutes from "./routes/pembicaraRoute.js";
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors());
+// Ganti bagian cors bawaan dengan whitelist domain Vercel Frontend kamu
+app.use(cors({
+  origin: ["https://fe-invofest.vercel.app", "http://localhost:5173"], 
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
 app.use(express.json());
 
 app.get('/', (req, res) => {
