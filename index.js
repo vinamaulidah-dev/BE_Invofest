@@ -1,11 +1,11 @@
 import express from "express";
 import cors from "cors";
+import eventRoutes from "./routes/eventRoute";
+import categoryRoutes from "./routes/categoryRoute";
+import pembicaraRoutes from "./routes/pembicaraRoute";
 
-// Panggil rute tanpa menuliskan ekstensi .ts atau .js di ujungnya
-import eventRoutes from "./src/routes/eventRoute";
-import categoryRoutes from "./src/routes/categoryRoute";
-import pembicaraRoutes from "./src/routes/pembicaraRoute";
-import authRoutes from "./src/routes/authRoute";
+// @ts-ignore
+import authRoutes from "./routes/authRoute";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -22,7 +22,6 @@ app.get('/', (req, res) => {
   res.send('Hello, World! Backend Invofest Berhasil Running.');
 });
 
-// Daftarkan rute API utama
 app.use('/events', eventRoutes);
 app.use('/categories', categoryRoutes);
 app.use('/pembicara', pembicaraRoutes);
