@@ -5,7 +5,7 @@ import categoryRoutes from "./routes/categoryRoute.js";
 import pembicaraRoutes from "./routes/pembicaraRoute.js";
 
 // @ts-ignore
-import authRoutes from "./routes/authRoute.js"; // Ekstensi .js di sini wajib agar Vercel production tidak memicu MODULE_NOT_FOUND
+import authRoutes from "./routes/authRoute.js"; 
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -22,11 +22,10 @@ app.get('/', (req, res) => {
   res.send('Hello, World! Backend Invofest Berhasil Running.');
 });
 
-// Daftarkan semua rute API
 app.use('/events', eventRoutes);
 app.use('/categories', categoryRoutes);
 app.use('/pembicara', pembicaraRoutes);
-app.use('/api/auth', authRoutes); // Jalur auth login & register resmi dibuka
+app.use('/api/auth', authRoutes);
 
 if (process.env.NODE_ENV !== 'production') {
   app.listen(port, () => {
