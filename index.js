@@ -1,9 +1,9 @@
 import express from "express";
 import cors from "cors";
-import eventRoutes from "./src/routes/eventRoute.js";
-import categoryRoutes from "./src/routes/categoryRoute.js";
-import pembicaraRoutes from "./src/routes/pembicaraRoute.js";
-import authRoutes from "./src/routes/authRoute.js"; // Memanggil file auth kamu
+import eventRoutes from "./src/routes/eventRoute";
+import categoryRoutes from "./src/routes/categoryRoute";
+import pembicaraRoutes from "./src/routes/pembicaraRoute";
+import authRoutes from "./src/routes/authRoute"; // Mengarah ke file auth tanpa .js
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -21,11 +21,11 @@ app.get('/', (req, res) => {
   res.send('Hello, World! Backend Invofest Berhasil Running.');
 });
 
-// Daftarkan rute API utama dengan jalur folder yang akurat
+// Daftarkan rute API utama tanpa ekstensi file
 app.use('/events', eventRoutes);
 app.use('/categories', categoryRoutes);
 app.use('/pembicara', pembicaraRoutes);
-app.use('/api/auth', authRoutes); // Jalur auth resmi dibuka di index.js!
+app.use('/api/auth', authRoutes); // Jalur auth resmi dibuka
 
 if (process.env.NODE_ENV !== 'production') {
   app.listen(port, () => {
