@@ -1,16 +1,15 @@
 import express from "express";
 import cors from "cors";
 
-// Gunakan require agar Vercel mendeteksi jalurnya secara otomatis saat runtime
-const eventRoutes = require("./src/routes/eventRoute");
-const categoryRoutes = require("./src/routes/categoryRoute");
-const pembicaraRoutes = require("./src/routes/pembicaraRoute");
-const authRoutes = require("./src/routes/authRoute");
+// Panggil rute tanpa menuliskan ekstensi .ts atau .js di ujungnya
+import eventRoutes from "./src/routes/eventRoute";
+import categoryRoutes from "./src/routes/categoryRoute";
+import pembicaraRoutes from "./src/routes/pembicaraRoute";
+import authRoutes from "./src/routes/authRoute";
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-// CORS diaktifkan untuk meloloskan localhost dan domain front-end kamu
 app.use(cors({
   origin: ["https://fe-invofest.vercel.app", "http://localhost:5173"], 
   methods: ["GET", "POST", "PUT", "DELETE"],
@@ -23,11 +22,11 @@ app.get('/', (req, res) => {
   res.send('Hello, World! Backend Invofest Berhasil Running.');
 });
 
-// Daftarkan rute-rute utama API kamu
-app.use('/events', eventRoutes.default || eventRoutes);
-app.use('/categories', categoryRoutes.default || categoryRoutes);
-app.use('/pembicara', pembicaraRoutes.default || pembicaraRoutes);
-app.use('/api/auth', authRoutes.default || authRoutes);
+// Daftarkan rute API utama
+app.use('/events', eventRoutes);
+app.use('/categories', categoryRoutes);
+app.use('/pembicara', pembicaraRoutes);
+app.use('/api/auth', authRoutes);
 
 if (process.env.NODE_ENV !== 'production') {
   app.listen(port, () => {
